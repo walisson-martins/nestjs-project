@@ -1,10 +1,18 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
-import { ProdutoDTO } from 'src/dto/produtoDTO';
-import { ProdutosService } from '../services/produtos.service';
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    ParseIntPipe,
+    Post,
+    Put,
+} from "@nestjs/common";
+import { ProdutoDTO } from "src/dto/produtoDTO";
+import { ProdutosService } from "../services/produtos.service";
 
-@Controller('produtos')
+@Controller("produtos")
 export class ProdutosController {
-
     constructor(private readonly produtosService: ProdutosService) { }
 
     @Get()
@@ -18,8 +26,7 @@ export class ProdutosController {
     }
 
     @Put(":id")
-    update(@Param("id", ParseIntPipe) id: number,
-        @Body() data: ProdutoDTO) {
+    update(@Param("id", ParseIntPipe) id: number, @Body() data: ProdutoDTO) {
         return this.produtosService.update(id, data);
     }
 
